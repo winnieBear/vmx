@@ -1,7 +1,7 @@
 >>>index.vm
-#parse('/ref.vm')
+##parse('/ref.vm')
 #parse('/direc.vm')
-#parse("/expr.vm")
+##parse("/expr.vm")
 ## comment
 #* block comment *#
 #[[ unparsed content ]]#

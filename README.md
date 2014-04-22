@@ -1,32 +1,33 @@
-# vmx
+# velocity
 
-A node velocity template engine and dependency analyser.
+A node velocity template engine.
 
-Node 版 velocity 模板引擎和依赖分析。
+Node 版 velocity 模板引擎。
+
+[Differ from Java edition](https://github.com/fool2fish/velocity/blob/master/docs/differ-from-java-edition.md)
+
+[Bug and suggestion](https://github.com/fool2fish/velocity/issues/new)
 
 ---
 
-Latest stable version: v0.2.x
+## 0. Features
 
-[velocity syntax document](http://velocity.apache.org/engine/devel/user-guide.html)
-
-[Differ from Java edition](https://github.com/fool2fish/vmx/blob/master/docs/differ-from-java-edition.md)
-
-[Bug and suggestion](https://github.com/fool2fish/vmx/issues/new)
-
+- Full implementation of velocity syntax.
+- View template dependencies.
+- View data structure of references in templates.
 
 ## 1. Installment
 
 ```
-$ npm install vmx -g
+$ npm install velocity -g
 ```
 
 ## 2. Quick Start
 
-I had prepared a example for you:
+An example is ready for you:
 
 ```
-$ git clone https://github.com/fool2fish/vmx.git
+$ git clone https://github.com/fool2fish/velocity.git
 $ cd examples
 ```
 
@@ -35,7 +36,7 @@ $ cd examples
 Command:
 
 ```
-$ vmx --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root1/index.vm --context ./context.js
+$ velocity --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root1/index.vm --context ./context.js
 ```
 
 Output:
@@ -56,7 +57,7 @@ Github: https://github.com/fool2fish
 Command:
 
 ```
-$ vmx --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root1/index.vm --context ./context.js --server
+$ velocity --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root1/index.vm --context ./context.js --server
 ```
 
 Then you can visit `localhost:6789` in browser to see the result.
@@ -66,7 +67,7 @@ Then you can visit `localhost:6789` in browser to see the result.
 Command:
 
 ```
-$ vmx --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root1/index.vm
+$ velocity --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root1/index.vm
 ```
 Output:
 
@@ -85,7 +86,7 @@ Output:
 Command:
 
 ```
-$ vmx --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root2/uisvr.vm --reverse
+$ velocity --root ./root1,./root2,./root3 --macro ./global-macro/macro.vm --template ./root2/uisvr.vm --reverse
 ```
 Output:
 
@@ -100,7 +101,7 @@ Output:
 #### Render a template
 
 ```
-var Engine = require('vmx').Engine
+var Engine = require('velocity').Engine
 var engine = new Engine( {{options}} )
 
 try {
@@ -117,7 +118,7 @@ try {
 #### Get the AST
 
 ```
-var parser = require('vmx').parser
+var parser = require('velocity').parser
 var content = fs.readFileSync( {{path/to/template}} , {encoding: {{encoding}} })
 try {
   var ast = parser.parse(content)
@@ -132,17 +133,17 @@ try {
 All options are very simple, you can view them in terminal:
 
 ```
-$ vmx -h
+$ velocity -h
 ```
 
 You can set a global config (in JSON format):
 
 ```
-$ vmx config
+$ velocity config
 ```
 
-then you can use config file as parameter
 
+then you can use config file as parameter 
 ```
-$ vmx -f ./my.conf
+$ velocity -f ./my.conf
 ```

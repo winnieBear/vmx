@@ -1,26 +1,10 @@
 >>>direc.vm
-##logic 
-#set($foo = true)
-#set($bar = false)
-## logical AND
-#if( $foo && $bar )
-   <strong> This AND that</strong>
+#foreach($entry in $user.entrySet())
+  key: $entry.key, value: $entry.value
 #end
-
-## logical OR
-#if( $foo || $bar )
-    <strong>This OR That</strong>
+#foreach($key in $user.keySet())
+  $velocityCount: $key
 #end
-
-##logical NOT
-#if( !$bar )
-  <strong>NOT that</strong>
-#end
-
-#if( $foo == $bar)it's true! #else it's not!#end
-
-Top 3 favorites:
-##loop
 #foreach($fav in $user.favorites) 
   $foreach.count: $fav 
   #if ($foreach.count >= 3) 
@@ -37,7 +21,6 @@ Top 3 favorites:
 </ul> 
 
  
-## master not supported 
 <ul>
 #foreach( $key in $allProductsTwo.keySet() )
     <li>Key: $key -> Value: $allProductsTwo.get($key)</li>
@@ -62,6 +45,7 @@ Top 3 favorites:
     $customer.name #if( $foreach.hasNext ), #end
 #end
 
+##$foreach.first,$foreach.last not supported
 <table>
 #foreach( $customer in $customerList )
     <tr>
@@ -78,42 +62,8 @@ Top 3 favorites:
     </tr>
 #end
 </table> 
-
 #evaluate('$dataForEval')
 #evaluate("$dataForEval")
-
-#set($from1="from=100")
-this is $from1
-#set($fromid="1")
-#set($from="\$from$fromid")
-the string from is $from
-the variable of from is #evaluate("$from")
-
-
-
-##===================macro test
-#commonMacro('Hello ' $user.name '!')
-
-##call parameter numbers < difined parameter numbers,Error
-##commonMacro('Hello ' $user.name)
-
-#d()
-
-#@d()I'm test a bodyContent something.#end
-
-#maTest($id,100,'abc',[1..5],['a','b','c'],false,$method.foo())
-
-#set($foo = $method.foo())
-#maMethod($foo)
-
-#blockMacro('Hello')
-
-#@blockMacro('Hello')
---->xxxxxTAG
-Name: $user.name
-xxxxxTAG<---
-#end
-
 
 ##escape test
 ================
@@ -141,16 +91,41 @@ $\\\!foo
 \\#end
 
 \\\#if( $isTrue )
-	this is true output
+  this is true output
 \\#end
 ================
 ##stop
 
-$method.name
-$method.getName()
+
+#define($userInfo)
+user info:
+name: $user.name
+github: $user.github
+#end
+$userInfo
+
+
+##macro test
+#commonMacro('Hello ' $user.name '!')
+#commonMacro('Hello ' 'everyone' '!')
+
+#@blockMacro('Hello')
+--->bodyContent
+Name: $user.name
+bodyContent<---
+#end
+
+#macro(localMacro, $a)
+$a
+#end
+#localMacro('local macro was called')
+#localMacro('local macro was called again')
 
 #set($company = 'alipay.com')
 Company: $company
+
+#set($job = "$title in $company")
+$job
 
 Date: $date.format($date.year, $date.month, $date.day)
 #if ( !$date.weather )

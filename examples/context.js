@@ -4,7 +4,7 @@ module.exports = {
     name: 'fool2fish',
     prop: 'name',
     github: 'https://github.com/fool2fish',
-    favorites: ['food', 'travel', 'comic', 'toomany','...']
+    favorites: ['food', 'travel', 'comic', '...']
   },
   
   allProducts:[  

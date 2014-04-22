@@ -1,11 +1,13 @@
 {
-  "name": "vmx",
-  "version": "0.2.1",
-  "description": "A node velocity template engine and dependency analyser.",
-  "homepage": "https://github.com/fool2fish/vmx",
+  "name": "velocity",
+  "version": "0.3.0",
+  "description": "A node velocity template engine.",
+  "homepage": "https://github.com/fool2fish/velocity",
   "keywords": [
-    "velocity template engine",
-    "velocity template dependencies"
+    "node",
+    "velocity",
+    "template",
+    "engine"
   ],
   "author": "fool2fish <fool2fish@gmail.com>",
   "dependencies": {
@@ -13,15 +15,14 @@
     "colorful": "2.1.0",
     "tracer": "0.6.1",
     "express": "3.1.0",
-    "iconv-lite": "0.2.11",
-    "totoro-common": "0.1.5"
+    "utilx": "0.0.4"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:fool2fish/vmx.git"
+    "url": "git@github.com:fool2fish/velocity.git"
   },
   "bin": {
-    "vmx": "./bin/vmx"
+    "velocity": "./bin/velocity"
   },
   "preferGlobal": true
 }
